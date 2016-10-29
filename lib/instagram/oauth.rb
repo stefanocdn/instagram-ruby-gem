@@ -16,6 +16,7 @@ module Instagram
       options[:redirect_uri] ||= self.redirect_uri
       params = authorization_params.merge(options)
       url = connection.build_url("/oauth/authorize/", params).to_s
+      puts url
       get(url)
     end
 
