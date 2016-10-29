@@ -10,6 +10,15 @@ module Instagram
       connection.build_url("/oauth/authorize/", params).to_s
     end
 
+    def get_authorize_url(options={})
+      options[:response_type] ||= "code"
+      options[:scope] ||= scope if !scope.nil? && !scope.empty?
+      options[:redirect_uri] ||= self.redirect_uri
+      params = authorization_params.merge(options)
+      url = connection.build_url("/oauth/authorize/", params).to_s)
+      get(url)
+    end
+
     # Return an access token from authorization
     def get_access_token(code, options={})
       options[:grant_type] ||= "authorization_code"
