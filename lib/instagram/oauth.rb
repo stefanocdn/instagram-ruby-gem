@@ -15,7 +15,7 @@ module Instagram
       options[:scope] ||= scope if !scope.nil? && !scope.empty?
       options[:redirect_uri] ||= self.redirect_uri
       params = authorization_params.merge(options)
-      url = connection.build_url("/oauth/authorize/", params).to_s)
+      url = connection.build_url("/oauth/authorize/", params).to_s
       get(url)
     end
 
